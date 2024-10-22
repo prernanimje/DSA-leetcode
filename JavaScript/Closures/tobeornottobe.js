@@ -1,0 +1,27 @@
+//2704. To Be Or Not To Be
+//Write a function expect that helps developers test their code. It should take in any value val and return an object with the following two functions.
+
+//Example 1:
+
+// Input: func = () => expect(5).toBe(5)
+// Output: {"value": true}
+// Explanation: 5 === 5 so this expression returns true.
+var expect = function(val) {
+    return{
+     toBe: (val2) => {
+            if (val === val2){
+                return true;
+            }else{
+                throw new Error("Not Equal")
+            }
+        },
+        notToBe: (val2) => {
+            if (val !== val2){
+                return true;
+            }
+            else{
+                throw new Error("Equal")
+            }
+        }
+    }
+};
